@@ -4,6 +4,7 @@
 
 #include "WifiAP.h"
 #include <ESP8266WiFi.h>
+#include "Config.h"
 
 WifiAP::WifiAP() {
 
@@ -11,8 +12,11 @@ WifiAP::WifiAP() {
 
 void WifiAP::setDefaults() {
     generateWifiHost();
+    if (Config.values.ap_ssid.length() > 0) {
+        ssid = Config.values.ap_ssid;
+    }
     ssid = wifiHost;
-    password = strdup("adminadmin");
+    password = Config.values.ap_password;
 }
 
 void WifiAP::onLoop() {
@@ -21,10 +25,10 @@ void WifiAP::onLoop() {
 
 void WifiAP::onSetup() {
     setDefaults();
-    WiFi.softAP(ssid, password);
+    WiFi.softAP(ssid.c_str(), password.c_str());
     IPAddress myIP = WiFi.softAPIP();
 
-    Serial.printf("AP: [%s] IP: [%s]\n", ssid, myIP.toString().c_str());
+    Serial.printf("AP: [%s] IP: [%s]\n", ssid.c_str(), myIP.toString().c_str());
 }
 
 void WifiAP::generateWifiHost() {

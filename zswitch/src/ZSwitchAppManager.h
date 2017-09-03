@@ -6,9 +6,9 @@
 #define ZSWITCH_ZSWITCHAPPMANAGER_H
 
 
-#include "ArduinoAppManager.h"
+#include "AppManager.h"
 
-class ZSwitchAppManager : public ArduinoAppManager {
+class ZSwitchAppManager : public AppManager {
 public:
     ZSwitchAppManager();
 };

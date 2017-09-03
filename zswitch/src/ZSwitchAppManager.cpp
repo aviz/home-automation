@@ -5,12 +5,14 @@
 #include "ZSwitchAppManager.h"
 #include "WifiClient.h"
 #include "WifiAP.h"
+#include "WebServer.h"
+#include "Config.h"
 
-ZSwitchAppManager::ZSwitchAppManager() : ArduinoAppManager() {
-    WifiClient *wifiClient = new WifiClient();
-    registerObject(wifiClient);
+ZSwitchAppManager::ZSwitchAppManager() : AppManager() {
+    registerInitalizableObject(&Config);
 
-    WifiAP *wifiAP = new WifiAP();
-    registerObject(wifiAP);
+    registerObject(&WebServer::getInstance());
+    registerObject(new WifiClient());
+    registerObject(new WifiAP());
 
 }

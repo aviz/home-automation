@@ -7,18 +7,23 @@
 
 
 #include "Runable.h"
+#include "Initializeable.h"
 
-class ArduinoAppManager {
+class AppManager {
 public:
-    ArduinoAppManager();
+    AppManager();
 
     void registerObject(Runable *obj);
+    void registerInitalizableObject(Initializeable *obj);
     void onSetup();
     void onLoop();
 
 private:
     Runable *runableObjects[100];
     int runableObjectsCount;
+
+    Initializeable *initializeableObjects[100];
+    int initializeableObjectsCount;
 };
 
 

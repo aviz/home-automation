@@ -22,6 +22,12 @@ add_custom_target(
 )
 
 add_custom_target(
+    PLATFORMIO_TEST ALL
+    COMMAND ${PLATFORMIO_CMD} -f -c clion test
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+)
+
+add_custom_target(
     PLATFORMIO_PROGRAM ALL
     COMMAND ${PLATFORMIO_CMD} -f -c clion run --target program
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
@@ -45,4 +51,4 @@ add_custom_target(
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-add_executable(${PROJECT_NAME} ${SRC_LIST} src/zswitch.cpp src/Runable.h src/WifiClient.cpp src/WifiClient.h src/ArduinoAppManager.cpp src/ArduinoAppManager.h src/ZSwitchAppManager.cpp src/ZSwitchAppManager.h src/WifiAP.cpp src/WifiAP.h src/Config.cpp src/Config.h src/ConfigListener.h)
+add_executable(${PROJECT_NAME} ${SRC_LIST})

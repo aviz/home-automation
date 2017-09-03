@@ -7,6 +7,7 @@
 
 class Runable {
 public:
+    virtual void onInit() {}
     virtual void onLoop() = 0;
     virtual void onSetup() = 0;
 };

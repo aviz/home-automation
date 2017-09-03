@@ -6,6 +6,7 @@
 #define ZSWITCH_WIFIAP_H
 
 
+#include <string>
 #include "Runable.h"
 
 
@@ -19,8 +20,8 @@ public:
     void setDefaults();
 
 private:
-    char *ssid;
-    char *password;
+    std::string ssid;
+    std::string password;
     char wifiHost[32] = {0};
 
     void generateWifiHost();

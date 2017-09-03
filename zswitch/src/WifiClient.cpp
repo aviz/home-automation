@@ -8,8 +8,8 @@
 
 void WifiClient::setDefaults() {
     generateWifiHost();
-    ssid = strdup("zwifi_2.4");
-    password = strdup("a1234567890");
+    ssid = strdup("wifi");
+    password = strdup("4yossi");
 }
 
 void WifiClient::onSetup() {
@@ -37,7 +37,7 @@ void WifiClient::connectToWifi() {
     Serial.printf("Connecting host: [%s] ssid: [%s] password: [%s]", wifiHost, ssid, password);
 
 
-    for (int retries = 0; WiFi.status() != WL_CONNECTED && retries < 10; retries++) {
+    for (int retries = 0; WiFi.status() != WL_CONNECTED && retries < 30; retries++) {
         delay(250);
         Serial.print(".");
     }

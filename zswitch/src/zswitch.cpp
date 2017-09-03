@@ -4,11 +4,12 @@
 
 #include <ESP8266mDNS.h>
 #include "ZSwitchAppManager.h"
+#include "Config.h"
 
 ZSwitchAppManager *app;
 
 void setup() {
-    Serial.begin(115200);
+    Serial.begin(9600);
 
     app = new ZSwitchAppManager();
     app->onSetup();
